@@ -1,28 +1,28 @@
-class Character {
-    constructor(name) {
-      this.name = name
-    }
+const character = {
+    name: this.name,
   
-    attack(target) {
-      this.name = target
-      console.log(`${target.name} and takes damage`)
-    }
+    attack: function(target) {
+      console.log(`${target.name} takes damage from ${this.name}`)
+    },
   
-    heal() {
-      console.log(`${this.name} stands still.`)
-    }
+    heal: function(target) {
+      console.log(`${target.name} is healed.`)
+    },
   
-    changeName(newName) {
+    changeName: function(newName) {
+      console.log(`Successfuly changed name of ${this.name} to ${newName}`)
       this.name = newName
-      console.log(`New Player Name ${this.name}`)
     }
   }
   
-  const player1 = new Character('Player 1')
-  const player2 = new Character('Player 2')
+  const player1 = Object.create(character)
+  const player2 = Object.create(character)
   
+  player1.name = 'Aston'
+  player2.name = 'Martin'
   console.log(`Name of player 1 : ${player1.name} || Name of player 2 : ${player2.name}`)
   player1.attack(player2)
   player2.heal(player2)
   player1.changeName('Arthur')
+  console.log(`Name of player 1: ${player1.name}`)
   
